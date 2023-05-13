@@ -5,18 +5,17 @@ import json
 import os
 from dotenv import load_dotenv
 
-#Задание для Zeazy
-'''
-1) Разобраться с баллами в бд
-'''
 
-# @bot.slash_command(description="Show your profile!"
-# async def profile(interaction: nextcord.Interaction):
-#     await interaction.send(file=nextcord.File('picture.png'))
+
 
 intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!",intents=intents)
+
+@bot.slash_command(description="Show your profile!")
+async def profile(interaction: nextcord.Interaction):
+    await interaction.send(file=nextcord.File('picture.png'))
+
 
 def encode_data(payload):
     return f"{payload}".encode()
