@@ -5,6 +5,10 @@ import json
 import os
 from dotenv import load_dotenv
 
+#Задание для Zeazy
+'''
+1) Разобраться с баллами в бд
+'''
 
 # @bot.slash_command(description="Show your profile!"
 # async def profile(interaction: nextcord.Interaction):
