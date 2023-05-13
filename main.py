@@ -31,7 +31,7 @@ def decode_data(payload):
 async def on_message(message):
     if not message.author.bot:
         user_id = message.author.id
-        r.set(user_id, encode_data({'balance': 0}))
+        r.hset(user_id, mapping={'balance': 0})
 
 
 @bot.slash_command(description="Show your balance!")
@@ -46,11 +46,11 @@ async def my_balance(interaction: nextcord.Interaction):
 async def bonus(interaction: nextcord.Interaction):
     if not interaction.user.bot:
         user_id = interaction.user.id
-    user_data = r.get(user_id)
+    user_data = r.hgetall(user_id)['balance']
     balance = user_data['balance']
     balance += 600
     user_data['balance'] = balance
-    r.set(user_id,encode_data(user_data))
+    r.hset(user_id, mapping={'balance': balance})
     await interaction.send("На ваш баланс зачислено 600 коинов!")
 
 
