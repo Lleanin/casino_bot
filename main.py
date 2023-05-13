@@ -42,6 +42,7 @@ async def my_balance(interaction: nextcord.Interaction):
 
 
 @bot.command()
+@commands.cooldown(1, 60, commands.BucketType.user)
 async def bonus(interaction: nextcord.Interaction):
     if not interaction.user.bot:
         user_id = interaction.user.id
