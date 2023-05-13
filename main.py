@@ -4,6 +4,7 @@ import redis
 import json
 import os
 from dotenv import load_dotenv
+from time import time
 
 #Задание для Zeazy
 '''
@@ -31,14 +32,16 @@ def decode_data(payload):
 async def on_message(message):
     if not message.author.bot:
         user_id = message.author.id
-        r.hset(user_id, mapping={'balance': 0})
+        r.hset(user_id,'balance', 0
+               #'time': 0
+              )
 
 
 @bot.slash_command(description="Show your balance!")
 async def my_balance(interaction: nextcord.Interaction):
     if not interaction.user.bot:
         user_id = interaction.user.id
-    await interaction.send("Ваш баланс составляет:{}".format(decode_data(r.get(user_id))['balance']))
+    await interaction.send("Ваш баланс составляет:{}".format(r.hget(user_id))['balance'])
 
 
 @bot.command()
@@ -49,7 +52,7 @@ async def bonus(interaction: nextcord.Interaction):
     balance = user_data['balance']
     balance += 600
     user_data['balance'] = balance
-    r.hset(user_id, mapping={'balance': balance})
+    r.hset(user_id,'balance', balance)
     await interaction.send("На ваш баланс зачислено 600 коинов!")
 
 
