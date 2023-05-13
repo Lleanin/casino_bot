@@ -5,8 +5,10 @@ import json
 import os
 from dotenv import load_dotenv
 
-
-
+#Задание для Zeazy
+'''
+1) Разобраться с баллами в бд
+'''
 
 intents = nextcord.Intents.default()
 intents.message_content = True
