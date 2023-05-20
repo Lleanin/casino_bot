@@ -46,7 +46,7 @@ async def my_balance(interaction: nextcord.Interaction):
 async def bonus(interaction: nextcord.Interaction):
     if not interaction.user.bot:
         user_id = interaction.user.id
-"""    user_data = r.hgetall(user_id)['balance']
+    """    user_data = r.hgetall(user_id)['balance']
     balance = user_data['balance']
     balance += 600
     user_data['balance'] = balance"""
@@ -56,8 +56,8 @@ async def bonus(interaction: nextcord.Interaction):
 
 if __name__ == '__main__':
     r = redis.Redis(
-    host='redis-16728.c266.us-east-1-3.ec2.cloud.redislabs.com',
-    port=16728,
+    host='redis-15825.c261.us-east-1-4.ec2.cloud.redislabs.com:15825',
+    port=15825,
     password='purple_love0816',
     charset="utf-8",
     decode_responses=True
